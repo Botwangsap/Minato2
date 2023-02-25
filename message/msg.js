@@ -209,9 +209,9 @@ module.exports = async(conn, msg, m, setting, store, welcome, _afk) => {
                 const buttonsDefault = [
                    { urlButton: { displayText: `Source Code`, url: setting.sosmed.youtube } },
                    { urlButton: { displayText: `Instagram`, url : setting.sosmed.instagram } },
-                   { quickReplyButton: { displayText: `🌐 Info Bot`, id: `${prefix}botinfo` } },
+                   { quickReplyButton: { displayText: `🥰 Info Bot`, id: `${prefix}botinfo` } },
                    { quickReplyButton: { displayText: `💰 Donasi`, id: `${prefix}donate` } },
-                   { quickReplyButton: { displayText: `🧑 Owner`, id: `${prefix}owner` } }
+                   { quickReplyButton: { displayText: `🗿 Owner`, id: `${prefix}owner` } }
                 ]
                 
                 const isImage = (type == 'imageMessage')
@@ -358,16 +358,16 @@ _*Special Thanks To :*_
 *• Adiwajshing/Baileys*
 *• Irfan H.*
 *• YogGazz*
-*• X-Code Team*
+*• AnggaKz*
 *• Penyedia Dari :*
    *- Rest Api*
    *- Module*`
                    var buts = [
                       { urlButton: { displayText: `Instagram`, url: setting.sosmed.instagram } },
                       { quickReplyButton: { displayText: `💰 Donasi`, id: `${prefix}donate` } },
-                      { quickReplyButton: { displayText: `🧑 Owner`, id: `${prefix}owner` } }
+                      { quickReplyButton: { displayText: `🗿 Owner`, id: `${prefix}owner` } }
                    ]
-                   conn.sendMessage(from, { caption: capt, image: fs.readFileSync('./media/minato.jpg'), footer: setting.footer, templateButtons: buts })
+                   conn.sendMessage(from, { caption: capt, image: fs.readFileSync('./media/7732bfe51150b0ad497e6e7460c36c56.jpg'), footer: setting.footer, templateButtons: buts })
                    break
                 case prefix+'runtime':
                    reply(runtime(process.uptime()))
@@ -664,7 +664,7 @@ _*Special Thanks To :*_
                    break
                 case prefix+'hidetag':
                    if (!isGroup) return reply(mess.OnlyGrup)
-                   if (!isPremium && !isOwner) return reply(mess.OnlyPrem)
+                   if (!isGroupAdmins) return reply(mess.GrupAdmin)
                    var memh = [];
                    groupMembers.map( i => memh.push(i.id) )
                    conn.sendMessage(from, { text: q ? q : '', mentions: memh })
@@ -1210,7 +1210,7 @@ Untuk mengambil Audio/Video dari hasil pencarian`
                    break
                 case prefix+'add':
                    if (!isGroup) return reply(mess.OnlyGrup)
-                   if (!isGroupAdmins) return reply(mess.GrupAdmin)
+                   if (!isPremium) return reply(mess.GrupAdmin)
                    if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                    if (groupMembers.length == 1000) return reply(`Anda tidak dapat menambah peserta, karena Grup sudah penuh!`)
                    var mems = []
@@ -1238,7 +1238,7 @@ Untuk mengambil Audio/Video dari hasil pencarian`
                    break
                 case prefix+'kick':
                    if (!isGroup) return reply(mess.OnlyGrup)
-                   if (!isGroupAdmins) return reply(mess.GrupAdmin)
+                   if (!isPremium) return reply(mess.GrupAdmin)
                    if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                    var number;
                    if (mentionUser.length !== 0) {
@@ -1257,7 +1257,7 @@ Untuk mengambil Audio/Video dari hasil pencarian`
                    break
                 case prefix+'antilink':
                    if (!isGroup) return reply(mess.OnlyGrup)
-                   if (!isGroupAdmins && !isOwner) return reply(mess.GrupAdmin)
+                   if (!isPremium && !isOwner) return reply(mess.GrupAdmin)
                    if (!isBotGroupAdmins) return reply(mess.BotAdmin)
                    if (args.length === 1) return reply(`Pilih enable atau disable`)
                    if (args[1].toLowerCase() === 'enable') {
